@@ -1,0 +1,48 @@
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+
+.timer-number {
+  font-size: 72px;
+}
+
+.timer-label {
+  font-size: 18px;
+}
+
+.timer-timeup {
+  font-size: 72px;
+}
+
+.timer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-box {
+  margin: 10px;
+  width: 80px;
+  align-self: center;
+}
+
+.timer-box-days {
+  margin: 10px;
+  align-self: center;
+  min-width: 80px;
+}
+
+.other-text {
+  font-size: 18px;
+  margin: 5px;
+}
+
+.header {
+  font-size: 28px;
+  margin-top: 10px;
+}
