@@ -16,7 +16,7 @@ export default function Form(props) {
   };
 
   return (
-    <Box sx={{width: 500, maxWidth: '100%'}} autoComplete='off'>
+    <Box sx={{width: 500, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <TextField
             value={name}
