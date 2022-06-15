@@ -1,44 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage"
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 // import "./App.css";
 import "./AppExtension.css";
 import Form from "./form"
+import Countdown from "./countdown";
 
 function App() {
-  const calculateTimeLeft = (date) => {
-    const difference = +new Date(date) - +new Date();
-    let timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
+  // function getDateTime(defaultValue) {
+  //   const saved = localStorage.getItem("dateTime");
+  //   const initial = JSON.parse(saved);
+  //   return initial || defaultValue;
+  // }
 
-    return timeLeft;
-  };
-
-  function getDateTime(defaultValue) {
-    const saved = localStorage.getItem("dateTime");
-    const initial = JSON.parse(saved);
-    return initial || defaultValue;
-  }
-
-  const [dateTime, setDateTime] = useState(getDateTime(new Date()));
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(dateTime));
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(calculateTimeLeft(dateTime));
-    }, 1000);
-  });
+  // const [dateTime, setDateTime] = useState(getDateTime(new Date()));
+  const [dateTime, setDateTime] = useLocalStorage("dateTime", new Date());
 
   const state = {
     value: dateTime,
@@ -48,44 +29,51 @@ function App() {
     setDateTime(newValue);
   };
 
-  const Timer = () => {
-    let timerComponents = [];
+  const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
-    Object.keys(timeLeft).forEach((interval) => {
-      // if (!timeLeft[interval] && interval !== "seconds") {
-      //   return;
-      // }
-      if (interval === "days"){
-        timerComponents.push(
-          <span className="timer-box-days">
-            <div className="timer-number">{timeLeft[interval]}</div>
-            <div className="timer-label">{interval.toUpperCase()}</div>
-          </span>
-        );
-      } else {
-        timerComponents.push(
-          <span className="timer-box">
-            <div className="timer-number">{timeLeft[interval]}</div>
-            <div className="timer-label">{interval.toUpperCase()}</div>
-          </span>
-        );
-      }
-    });
+  const [mode, setMode] = useLocalStorage("theme", "light");
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
 
-    return timerComponents;
-  }
-  
-  
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  );
+
   return (
-    <div className="App">
-      <div className="header">Countdown Timer</div>
-      {/* <div className="Timer">{Timer().length ? Timer() : <div className="timer-timeup">Time's up!</div>}</div> */}
-      <div className="timer">{Timer()}</div>
-      <div className="other-text">UNTIL</div>
-      <Form
-        value={state}
-        onChangeValue={handleChangeValue}/>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <Box
+        sx={{
+          bgcolor: 'background.default',
+          color: 'text.primary',
+        }}
+        >
+          <div className="App">
+            <div className="header">Countdown Timer 
+              <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton></div>
+            <Countdown value={state}/>
+            <div className="other-text">UNTIL</div>
+            <Form
+              value={state}
+              onChangeValue={handleChangeValue}/>
+          </div>
+        </Box>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 

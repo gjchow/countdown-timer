@@ -1,0 +1,28 @@
+.countdown {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.timer-number {
+  font-size: 80px;
+}
+
+.timer-label {
+  font-size: 20px;
+}
+
+.timer-timeup {
+  font-size: 80px;
+}
+
+.timer-box {
+  margin: 10px;
+  width: 85px;
+}
+
+.timer-box-days {
+  margin: 10px;
+  min-width: 85px;
+}

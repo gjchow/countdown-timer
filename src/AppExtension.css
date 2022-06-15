@@ -6,36 +6,6 @@
   height: 100%;
 }
 
-.timer-number {
-  font-size: 80px;
-}
-
-.timer-label {
-  font-size: 20px;
-}
-
-.timer-timeup {
-  font-size: 80px;
-}
-
-.timer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timer-box {
-  margin-right: 10px;
-  margin-left: 10px;
-  width: 80px;
-}
-
-.timer-box-days {
-  margin: 10px;
-  min-width: 80px;
-}
-
 .other-text {
   font-size: 20px;
   margin: 8px;

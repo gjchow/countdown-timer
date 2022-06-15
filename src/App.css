@@ -3,38 +3,6 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  height: 100%;
-}
-
-.timer-number {
-  font-size: 100px;
-}
-
-.timer-label {
-  font-size: 20px;
-}
-
-.timer-timeup {
-  font-size: 100px;
-}
-
-.timer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timer-box {
-  margin: 12px;
-  width: 120px;
-  align-self: center;
-}
-
-.timer-box-days {
-  margin: 12px;
-  align-self: center;
-  min-width: 120px;
 }
 
 .other-text {
