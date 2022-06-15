@@ -7,15 +7,15 @@
 }
 
 .timer-number {
-  font-size: 72px;
+  font-size: 80px;
 }
 
 .timer-label {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .timer-timeup {
-  font-size: 72px;
+  font-size: 80px;
 }
 
 .timer {
@@ -26,23 +26,23 @@
 }
 
 .timer-box {
-  margin: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
   width: 80px;
-  align-self: center;
 }
 
 .timer-box-days {
   margin: 10px;
-  align-self: center;
   min-width: 80px;
 }
 
 .other-text {
-  font-size: 18px;
-  margin: 5px;
+  font-size: 20px;
+  margin: 8px;
 }
 
 .header {
-  font-size: 28px;
-  margin-top: 10px;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: -7px;
 }

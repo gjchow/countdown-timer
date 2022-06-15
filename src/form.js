@@ -16,49 +16,59 @@ export default function Form(props) {
   };
 
   return (
-    <Box sx={{width: 500, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <TextField
-            value={name}
-            inputProps={{ maxLength: 100, style: { textAlign: 'center'}}}
-            onChange={(e) => setName(e.target.value)}
-            sx={{marginTop: '20px'}}
-            fullWidth
-          />
-        <DesktopDatePicker
-          inputFormat="MM/dd/yyyy"
-          value={dateTime}
-          onChange={handleChange}
-          renderInput={(params) => <TextField sx={{width: 240, maxWidth: '50%', marginTop: '20px', marginRight: '10px'}} {...params} />}
+    // <Box sx={{width: 500, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
+    //   <LocalizationProvider dateAdapter={AdapterDateFns}>
+    //     <TextField
+    //         value={name}
+    //         inputProps={{ maxLength: 100, style: { textAlign: 'center'}}}
+    //         onChange={(e) => setName(e.target.value)}
+    //         sx={{marginTop: '20px'}}
+    //         fullWidth
+    //       />
+    //     <DesktopDatePicker
+    //       inputFormat="MM/dd/yyyy"
+    //       value={dateTime}
+    //       onChange={handleChange}
+    //       renderInput={(params) => <TextField sx={{width: 240, maxWidth: '50%', marginTop: '20px', marginRight: '10px'}} {...params} />}
+    //     />
+    //     <TimePicker
+    //       value={dateTime}
+    //       onChange={handleChange}
+    //       renderInput={(params) => <TextField sx={{width: 240, maxWidth: '50%', marginTop: '20px', marginLeft: '10px'}} {...params} />}
+    //     />
+    //   </LocalizationProvider>
+    // </Box>
+    <Box sx={{width: 350, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <TextField
+          value={name}
+          inputProps={{ maxLength: 100, style: { textAlign: 'center'}}}
+          onChange={(e) => setName(e.target.value)}
+          sx={{marginTop: '20px'}}
+          fullWidth
         />
-        <TimePicker
-          value={dateTime}
-          onChange={handleChange}
-          renderInput={(params) => <TextField sx={{width: 240, maxWidth: '50%', marginTop: '20px', marginLeft: '10px'}} {...params} />}
-        />
-      </LocalizationProvider>
-    </Box>
-  //   <Box sx={{width: 310, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
-  //   <LocalizationProvider dateAdapter={AdapterDateFns}>
-  //     <TextField
-  //         value={name}
-  //         inputProps={{ maxLength: 100, style: { textAlign: 'center'}}}
-  //         onChange={(e) => setName(e.target.value)}
-  //         sx={{marginTop: '20px'}}
-  //         fullWidth
-  //       />
-  //     <DesktopDatePicker
-  //       inputFormat="MM/dd/yyyy"
-  //       value={dateTime}
-  //       onChange={handleChange}
-  //       renderInput={(params) => <TextField sx={{width: 150, maxWidth: '50%', marginTop: '10px', marginRight: '5px', fontSize: '10px'}} {...params} />}
-  //     />
-  //     <TimePicker
-  //       value={dateTime}
-  //       onChange={handleChange}
-  //       renderInput={(params) => <TextField sx={{width: 150, maxWidth: '50%', marginTop: '10px', marginLeft: '5px'}} {...params} />}
-  //     />
-  //   </LocalizationProvider>
-  // </Box>
+      <DesktopDatePicker
+        views={['day']}
+        inputFormat="MM/dd/yyyy"
+        value={dateTime}
+        onChange={handleChange}
+        renderInput={(params) => <TextField sx={{width: 168, maxWidth: '50%', marginTop: '14px', marginRight: '7px', fontSize: '10px'}} {...params} />}
+        PopperProps={{
+          placement: "top",
+          sx: {"& .MuiPaper-root": {
+            maxHeight: "335px",
+          }}
+        }}
+      />
+      <TimePicker
+        value={dateTime}
+        onChange={handleChange}
+        renderInput={(params) => <TextField sx={{width: 168, maxWidth: '50%', marginTop: '14px', marginLeft: '7px'}} {...params} />}
+        PopperProps={{
+          placement: "top",
+        }}
+      />
+    </LocalizationProvider>
+  </Box>
   );
 };
