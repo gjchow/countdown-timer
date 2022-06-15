@@ -2,19 +2,15 @@
   "short_name": "Countdown Timer",
   "name": "Countdown Timer",
   "description": "Count down time to a certain date",
-  "version": "1.0",
+  "version": "1.0.3",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
-    "default_title": "Open the popup"
+    "default_title": "Countdown Timer"
   },
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-  },
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  }
 }
