@@ -2,7 +2,7 @@
   "short_name": "Countdown Timer",
   "name": "Countdown Timer",
   "description": "Count down time to a certain date",
-  "version": "1.0.4",
+  "version": "0.1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
