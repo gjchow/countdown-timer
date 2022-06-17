@@ -62,7 +62,7 @@ function App() {
         >
           <div className="App">
             <div className="header">Countdown Timer 
-              <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={colorMode.toggleColorMode} color="inherit">
                   {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton></div>
             <Countdown value={state}/>
