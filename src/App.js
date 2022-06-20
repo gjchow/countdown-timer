@@ -3,12 +3,14 @@ import { useLocalStorage } from "./useLocalStorage"
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import DarkMode from '@mui/icons-material/DarkMode';
+import LightMode from '@mui/icons-material/LightMode';
+import Timer from '@mui/icons-material/Timer';
 // import "./App.css";
 import "./AppExtension.css";
 import Form from "./form"
 import Countdown from "./countdown";
+import BasicModal from "./modal";
 
 function App() {
 
@@ -51,6 +53,10 @@ function App() {
     [mode],
   );
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -63,7 +69,10 @@ function App() {
           <div className="App">
             <div className="header">Countdown Timer 
               <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={colorMode.toggleColorMode} color="inherit">
-                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                  {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
+              </IconButton>
+              <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleOpen} color="inherit">
+                  <Timer/>
               </IconButton></div>
             <Countdown value={state}/>
             <div className="other-text">UNTIL</div>
@@ -71,6 +80,10 @@ function App() {
               value={state}
               onChangeValue={handleChangeValue}/>
           </div>
+          <BasicModal
+              onSubmit={handleChangeValue}
+              open={open}
+              handleClose={handleClose}/>
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
