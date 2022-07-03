@@ -6,11 +6,14 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import DarkMode from '@mui/icons-material/DarkMode';
 import LightMode from '@mui/icons-material/LightMode';
 import Timer from '@mui/icons-material/Timer';
+import ChangeCircle from '@mui/icons-material/ChangeCircle';
 // import "./App.css";
 import "./AppExtension.css";
 import Form from "./form"
 import Countdown from "./countdown";
-import BasicModal from "./modal";
+import { Tooltip } from "@mui/material";
+import TimerModal from "./timerModal";
+import ConversionModal from "./conversionModal";
 
 function App() {
 
@@ -53,9 +56,13 @@ function App() {
     [mode],
   );
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [timerOpen, setTimerOpen] = React.useState(false);
+  const handleTimerOpen = () => setTimerOpen(true);
+  const handleTimerClose = () => setTimerOpen(false);
+
+  const [conversionOpen, setConversionOpen] = React.useState(false);
+  const handleConversionOpen = () => setConversionOpen(true);
+  const handleConversionClose = () => setConversionOpen(false);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -67,23 +74,40 @@ function App() {
         }}
         >
           <div className="App">
-            <div className="header">Countdown Timer 
-              <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={colorMode.toggleColorMode} color="inherit">
-                  {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
-              </IconButton>
-              <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleOpen} color="inherit">
-                  <Timer/>
-              </IconButton></div>
+            <div className="header">Countdown Timer
+              <Tooltip title={theme.palette.mode === 'dark' ? 'Light Mode' : 'Dark Mode'} PopperProps={{
+                      modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
+                <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={colorMode.toggleColorMode} color="inherit">
+                    {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
+                </IconButton>
+              </Tooltip>
+              {/* <Tooltip title='Timer' PopperProps={{
+                      modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
+                <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleTimerOpen} color="inherit">
+                    <Timer/>
+                </IconButton>
+              </Tooltip> */}
+              <Tooltip title='Time Conversion' PopperProps={{
+                      modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
+                <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleConversionOpen} color="inherit">
+                    <ChangeCircle/>
+                </IconButton>
+              </Tooltip>
+            </div>
             <Countdown value={state}/>
             <div className="other-text">UNTIL</div>
             <Form
               value={state}
               onChangeValue={handleChangeValue}/>
           </div>
-          <BasicModal
+          <TimerModal
               onSubmit={handleChangeValue}
-              open={open}
-              handleClose={handleClose}/>
+              open={timerOpen}
+              handleClose={handleTimerClose}/>
+          <ConversionModal
+              onSubmit={handleChangeValue}
+              open={conversionOpen}
+              handleClose={handleConversionClose}/>
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>

@@ -18,9 +18,10 @@ const style = {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
+  borderRadius: 2,
 };
 
-export default function BasicModal(props) {
+export default function TimerModal(props) {
   const [days, setDays] = React.useState(0);
   const [hours, setHours] = React.useState(0);
   const [minutes, setMinutes] = React.useState(0);
@@ -59,7 +60,7 @@ export default function BasicModal(props) {
           <Typography id="modal-modal-description" sx={{ mt: 2 , marginBottom: "10px", marginTop: "10px"}}>
             Anything less than 0 will be ignored.
           </Typography>
-          <Box sx={{display: "flex", flexDirection: 'column',}}>
+          <Box sx={{display: "flex", flexDirection: 'column'}}>
             <TextField 
               value={days}
               onChange={(e) => setDays(e.target.value)}
@@ -67,7 +68,7 @@ export default function BasicModal(props) {
               label="Days" 
               type="number"
               InputProps={{ inputProps: { min: 0} }}
-              sx={{marginTop: "10px", width: "224px"}}/>
+              sx={{marginTop: "10px", width: 300}}/>
             <TextField 
               value={hours}
               onChange={(e) => setHours(e.target.value)}
@@ -75,7 +76,7 @@ export default function BasicModal(props) {
               label="Hours" 
               type="number"
               InputProps={{ inputProps: { min: 0} }}
-              sx={{marginTop: "10px", width: "224px"}}/>
+              sx={{marginTop: "10px", width: 300}}/>
             <TextField 
               value={minutes}
               onChange={(e) => setMinutes(e.target.value)}
@@ -83,7 +84,7 @@ export default function BasicModal(props) {
               label="Minutes" 
               type="number"
               InputProps={{ inputProps: { min: 0} }}
-              sx={{marginTop: "10px", width: "224px"}}/>
+              sx={{marginTop: "10px", width: 300}}/>
             <TextField 
               value={seconds}
               onChange={(e) => setSeconds(e.target.value)}
@@ -91,11 +92,11 @@ export default function BasicModal(props) {
               label="Seconds" 
               type="number"
               InputProps={{ inputProps: { min: 0} }}
-              sx={{marginTop: "10px", width: "224px"}}/>
+              sx={{marginTop: "10px", width: 300}}/>
           </Box>
           <span>
-          <Button sx={{marginTop: "10px", width: "107px", marginRight: "5px"}} onClick={onSubmit} variant="outlined">OK</Button>
-          <Button sx={{marginTop: "10px", width: "107px", marginLeft: "5px"}} onClick={props.handleClose} variant="outlined">Cancel</Button></span>
+          <Button sx={{marginTop: "10px", width: 145, marginRight: "5px"}} onClick={onSubmit} variant="outlined">OK</Button>
+          <Button sx={{marginTop: "10px", width: 145, marginLeft: "5px"}} onClick={props.handleClose} variant="outlined">Cancel</Button></span>
         </Box>
       </Modal>
     </div>

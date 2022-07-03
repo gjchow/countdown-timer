@@ -1,6 +1,6 @@
 import { useLocalStorage } from "./useLocalStorage"
 import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -37,7 +37,7 @@ export default function Form(props) {
     //   </LocalizationProvider>
     // </Box>
     <Box sx={{width: 350, maxWidth: '100%', marginBottom: '20px'}} autoComplete='off'>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterMoment}>
         <TextField
             value={name}
             inputProps={{ maxLength: 100, style: { textAlign: 'center'}}}
@@ -47,7 +47,7 @@ export default function Form(props) {
           />
         <DesktopDatePicker
           views={['day']}
-          inputFormat="MM/dd/yyyy"
+          inputFormat="MM/DD/yyyy"
           value={props.value.value}
           onChange={handleChange}
           renderInput={(params) => <TextField sx={{width: 168, maxWidth: '50%', marginTop: '14px', marginRight: '7px', fontSize: '10px'}} {...params} />}
