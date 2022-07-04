@@ -3,10 +3,6 @@ import { useLocalStorage } from "./useLocalStorage"
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import DarkMode from '@mui/icons-material/DarkMode';
-import LightMode from '@mui/icons-material/LightMode';
-import Timer from '@mui/icons-material/Timer';
-import ChangeCircle from '@mui/icons-material/ChangeCircle';
 // import "./App.css";
 import "./AppExtension.css";
 import Form from "./form"
@@ -14,6 +10,7 @@ import Countdown from "./countdown";
 import { Tooltip } from "@mui/material";
 import TimerModal from "./timerModal";
 import ConversionModal from "./conversionModal";
+import { DarkMode, LightMode, ChangeCircle, Today } from "@mui/icons-material";
 
 function App() {
 
@@ -64,6 +61,10 @@ function App() {
   const handleConversionOpen = () => setConversionOpen(true);
   const handleConversionClose = () => setConversionOpen(false);
 
+  const today = () => {
+    setDateTime(new Date());
+  }
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -87,6 +88,12 @@ function App() {
                     <Timer/>
                 </IconButton>
               </Tooltip> */}
+              <Tooltip title='Set Date Now' PopperProps={{
+                      modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
+                <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={today} color="inherit">
+                    <Today/>
+                </IconButton>
+              </Tooltip>
               <Tooltip title='Time Conversion' PopperProps={{
                       modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
                 <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleConversionOpen} color="inherit">
