@@ -72,6 +72,7 @@ function App() {
         sx={{
           bgcolor: 'background.default',
           color: 'text.primary',
+          height: 470,
         }}
         >
           <div className="App">

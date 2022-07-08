@@ -13,7 +13,7 @@ const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
+  transform: 'translate(-50%, -55%)',
   width: 300,
   bgcolor: 'background.default',
   boxShadow: 24,
@@ -78,7 +78,7 @@ export default function ConversionModal(props) {
             onChange={handleChange}
             renderInput={(params) => <TextField sx={{width: 145, maxWidth: '50%', marginTop: '10px', marginRight: '5px'}} {...params} />}
             PopperProps={{
-              placement: "top",
+              placement: "bottom",
               sx: {"& .MuiPaper-root": {
                 maxHeight: "335px",
               }}
@@ -89,7 +89,7 @@ export default function ConversionModal(props) {
             onChange={handleChange}
             renderInput={(params) => <TextField sx={{width: 145, maxWidth: '50%', marginTop: '10px', marginLeft: '5px'}} {...params} />}
             PopperProps={{
-              placement: "top",
+              placement: "bottom",
             }}
           />
           </LocalizationProvider>
