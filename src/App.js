@@ -95,12 +95,12 @@ function App() {
                     <Today/>
                 </IconButton>
               </Tooltip>
-              <Tooltip title='Time Conversion' PopperProps={{
+              {/* <Tooltip title='Time Conversion' PopperProps={{
                       modifiers: [{name: "offset", options: {offset: [0, -14], }, }, ], }}>
                 <IconButton sx={{ ml: 1, transform: 'translateY(-3px)' }} onClick={handleConversionOpen} color="inherit">
                     <ChangeCircle/>
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </div>
             <Countdown value={state}/>
             <div className="other-text">UNTIL</div>
